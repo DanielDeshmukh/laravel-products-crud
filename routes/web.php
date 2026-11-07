@@ -12,6 +12,6 @@ Route::get('/', function () {
 
 Route::get('/hello', [HelloController::class, 'index']);
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->except('show');
 
 

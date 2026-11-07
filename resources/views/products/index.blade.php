@@ -2,15 +2,15 @@
 <a href="{{ route('products.create') }}">Add product</a>
 
 <ul>
-@foreach ($products as $product)
-    <li>
-        {{ $product->name }} - ₹{{ $product->price }}
-        <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline">
-            @csrf
-            @method('DELETE')
-            <button>Delete</button>
-            <a href="{{ route('products.edit', $product) }}">Edit</a>
-        </form>
-    </li>
-@endforeach
+    @foreach ($products as $product)
+        <li>
+            {{ $product->name }} - ₹{{ $product->price }} ({{ $product->category->name ?? 'No category' }})
+            <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+                <a href="{{ route('products.edit', $product) }}">Edit</a>
+            </form>
+        </li>
+    @endforeach
 </ul>
